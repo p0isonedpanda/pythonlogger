@@ -16,12 +16,13 @@ logLevel = {
 # call this to set the level of logging in your program
 def set_logging(state):
     if state < 0 or state > 3:
-        print('you cannot set logging to ' + str(state))
+        print('[ERROR] you cannot set logging to ' + str(state))
         return
     
     global logging
     logging = state
 
-def log(message, level):
-    if level <= logging:
-        print(logLevel[level] + message)
+def log(message, level=1):
+    if level <= logging and level > 0:
+        print(logLevel[level], end='')
+        print(message)
